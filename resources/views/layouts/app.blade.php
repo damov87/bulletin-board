@@ -18,13 +18,30 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        a.active {
+            opacity: 0.5;
+            pointer-events: none;
+            cursor: default;
+        }
+
+        .cabinet-links {
+            margin: 1rem;
+        }
+
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand {{ Request::path() == '/' ? 'active' : null }}" href="{{ url('/') }}">
+                    {{ config('app.name') }}
+                </a>
+
+{{--                <a class="navbar-brand {{ Request::is('users/*/edit') || Request::path() == 'advertisements' ? 'active' : null }}" href="{{ route('users.edit', [$user->id ?? '']) }}">--}}
+                <a class="navbar-brand {{ Request::is('users/*/edit') || Request::is('user_cabinet/*') ? 'active' : null }}" href="{{ route('cabinet', [$user->id ?? '']) }}">
+                    User Cabinet
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

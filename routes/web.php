@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'AdvertisementController@index')->name('main');
-
 Route::get('/home', 'AdvertisementController@index')->name('home');
 
 Route::resource('advertisements', 'AdvertisementController');
+Route::resource('users', 'UserController')->middleware('user.cabinet');
+
+Route::get('/user_cabinet/{user}', 'UserController@cabinet')->name('cabinet')->middleware('auth');

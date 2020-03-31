@@ -9,8 +9,11 @@
                         <thead>
                         <tr>
                             <th>@lang('Id')</th>
-                            <th>@lang('Title')</th>
                             <th>@lang('Author')</th>
+                            <th>@lang('Image')</th>
+                            <th>@lang('Title')</th>
+                            <th>@lang('Description')</th>
+                            <th>@lang('Publication Date')</th>
                         </tr>
                         </thead>
                         <tbody id="pannel">
