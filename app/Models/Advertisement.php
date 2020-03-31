@@ -15,4 +15,11 @@ class Advertisement extends Model
     protected $fillable = [
         'title', 'description', 'image', 'user_id',
     ];
+
+    /**
+     * Get relations with Users table
+     */
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

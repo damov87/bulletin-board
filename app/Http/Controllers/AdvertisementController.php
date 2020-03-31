@@ -14,7 +14,10 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        $advertisements = Advertisement::all();
+        $advertisements = Advertisement::query()
+            ->select('id', 'user_id', 'title', 'created_at')
+            ->with('user')
+            ->paginate(10);
 
         return view('ads.index', compact('advertisements'));
     }
