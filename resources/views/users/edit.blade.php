@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <a href="javascript:history.back()">Go Back</a>
+        <a href="{{ route('cabinet') }}">Go Back</a>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">

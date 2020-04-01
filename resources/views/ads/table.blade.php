@@ -6,5 +6,6 @@
         <td>{{ $advertisement->title }}</td>
         <td>{{ $advertisement->description }}</td>
         <td>{{ $advertisement->created_at }}</td>
+        <td><a class="btn btn-success" href="{{ route('advertisements.show', [$advertisement->id]) }}" role="button" title="@lang('Show')">Show</a></td>
     </tr>
 @endforeach

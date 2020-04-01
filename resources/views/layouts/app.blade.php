@@ -29,6 +29,28 @@
             margin: 1rem;
         }
 
+        .img-centered {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .text-centered {
+            text-align: center;
+        }
+
+        .publication {
+            display: block;
+            text-align: right;
+            margin-top: -2rem;
+        }
+
+        .description {
+            display: block;
+            margin-left: 5rem;
+            margin-right: 5rem;
+        }
+
     </style>
 </head>
 <body>
