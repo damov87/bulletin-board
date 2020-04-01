@@ -1,30 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="box">
-                <div class="box-body table-responsive">
-                    <table id="users" class="table table-striped table-bordered">
-                        <thead>
-                        <tr>
-                            <th>@lang('Id')</th>
-                            <th>@lang('Author')</th>
-                            <th>@lang('Image')</th>
-                            <th>@lang('Title')</th>
-                            <th>@lang('Description')</th>
-                            <th>@lang('Publication Date')</th>
-                        </tr>
-                        </thead>
-                        <tbody id="pannel">
-                        @include('ads.table', compact('advertisements'))
-                        </tbody>
-                    </table>
-                </div>
-                <div id="pagination" class="box-footer">
-                    {{ $advertisements->links() }}
-                </div>
+    <div class="container">
+        @foreach($advertisements as $advertisement)
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ $advertisement->image }}" class="img-centered smaller">
+                <div style="text-align: center">{{ ucfirst (utf8_encode ($advertisement->created_at->formatLocalized('%d %B %Y, %H:%M:%S'))) }}</div>
             </div>
+            <div class="col">
+                <h1>{{ $advertisement->title }}</h1>
+                <span>{{ $advertisement->description }}</span>
+                <h4 style="text-align: right; margin-right: 2rem;">Author: {{ $advertisement->user->name }} {{ $advertisement->user->last_name }}</h4>
+                <a class="btn btn-primary" href="{{ route('advertisements.show', [$advertisement->id]) }}" role="button" style="margin-top: -2rem" title="@lang('View')">View</a>
+            </div>
+
         </div>
+            <hr>
+        @endforeach
+    </div>
+    <div id="pagination" style="margin-left: 25rem" class="box-footer">
+        {{ $advertisements->links() }}
     </div>
 @endsection

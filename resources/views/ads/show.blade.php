@@ -15,7 +15,7 @@
         </div>
 
         <div class="col-md-8 offset-md-2">
-            <h4>Author: {{ $advertisement->user->name }} {{ $advertisement->user->last_name }}</h4>
+            <h4 class="author">Author: {{ $advertisement->user->name }} {{ $advertisement->user->last_name }}</h4>
         </div>
 
         <div class="col-md-8 offset-md-2">

@@ -43,12 +43,22 @@
             display: block;
             text-align: right;
             margin-top: -2rem;
+            margin-right: 5rem;
         }
 
         .description {
             display: block;
             margin-left: 5rem;
             margin-right: 5rem;
+        }
+
+        .author {
+            margin-left: 5rem;
+        }
+
+        .smaller {
+            width: 350px;
+            height: auto;
         }
 
     </style>

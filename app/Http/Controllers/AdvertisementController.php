@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
 use App\Repositories\AdvertisementRepository;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,39 +66,5 @@ class AdvertisementController extends Controller
         $advertisement = Advertisement::find($id);
 
         return view('ads.show', compact('advertisement'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
