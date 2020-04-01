@@ -2,25 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdvertisementRequest;
 use App\Models\Advertisement;
+use App\Repositories\AdvertisementRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class AdvertisementController extends Controller
 {
+    protected $repository;
+
+    public function __construct(AdvertisementRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
         $user = Auth::user();
-
-        $advertisements = Advertisement::query()
-            ->select('id', 'image', 'description', 'user_id', 'title', 'created_at')
-            ->with('user')
-            ->paginate(10);
+        $advertisements = $this->repository->getAll();
 
         return view('ads.index', compact('advertisements', 'user'));
     }
@@ -28,29 +34,33 @@ class AdvertisementController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        dd(__METHOD__);
+        $user = Auth::user();
+
+        return view('ads.create', compact('user'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param AdvertisementRequest $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(AdvertisementRequest $request)
     {
-        //
+        $this->repository->store($request);
+
+        return back()->with('post-ok', __('Advertisement successfully created'));
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -61,7 +71,7 @@ class AdvertisementController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -71,9 +81,9 @@ class AdvertisementController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -84,7 +94,7 @@ class AdvertisementController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

@@ -20,7 +20,7 @@ $factory->define(Advertisement::class, function (Faker $faker) {
     $title = $faker->sentence(rand(2,5), true);
     $description = $faker->realText(rand(500,1000));
     $user = 1;
-    $image = url('/images/image.jpg');
+    $image = '/images/image.jpg';
 
     return [
         'user_id' => $user,

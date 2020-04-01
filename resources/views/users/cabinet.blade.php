@@ -7,7 +7,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <a class="navbar-brand cabinet-links" href="{{ route('users.edit', [$user->id ?? '']) }}">
-                        Edit User
+                        Edit Account Info
                     </a>
                     <a class="navbar-brand cabinet-links" href="{{ route('advertisements.create') }}">
                         Add Advertisement
