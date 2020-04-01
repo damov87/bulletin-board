@@ -7,6 +7,7 @@ use App\Models\Advertisement;
 use App\Repositories\UserRepository;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -19,11 +20,12 @@ class UserController extends Controller
 
 
     /**
-     * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function cabinet(User $user)
+    public function cabinet()
     {
+        $user = Auth::user();
+
         return view('users.cabinet', compact('user'));
     }
 

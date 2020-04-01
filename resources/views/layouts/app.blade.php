@@ -41,7 +41,7 @@
 
 {{--                <a class="navbar-brand {{ Request::is('users/*/edit') || Request::path() == 'advertisements' ? 'active' : null }}" href="{{ route('users.edit', [$user->id ?? '']) }}">--}}
                 <a class="navbar-brand {{ Request::is('users/*/edit') || Request::is('advertisements/create')
-                || Request::is('user_cabinet/*') ? 'active' : null }}" href="{{ route('cabinet', [$user->id ?? '']) }}">
+                || Request::is('user_cabinet*') ? 'active' : null }}" href="{{ route('cabinet', [$user->id ?? '']) }}">
                     User Cabinet
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
